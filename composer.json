@@ -1,0 +1,15 @@
+{
+    "name": "alekseon/yuppim-api-v1-php-sdk",
+    "description": "Yuppim Api PHP SDK",
+    "require": {
+        "php": "^7.0"
+    },
+    "type": "library",
+    "version": "100.0.0",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "YuppimApi\\": "src"
+        }
+    }
+}
