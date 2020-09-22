@@ -17,8 +17,10 @@ class ProductList extends AbstractApi
      * @var string 
      */
     protected $endpoint = 'products';
+
     protected $page;
     protected $limit;
+    protected $filters = [];
 
     /**
      * @param $page
@@ -39,7 +41,30 @@ class ProductList extends AbstractApi
         $this->limit = $limit;
         return $this;
     }
-    
+
+    /**
+     * @param $field
+     * @param $operator
+     * @param $value
+     */
+    public function addFilter($field, $operator, $value)
+    {
+        $this->filters[$field][] = [
+            'operator' => $operator,
+            'value' => $value,
+        ];
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function resetFilters()
+    {
+        $this->filters = [];
+        return $this;
+    }
+
     /**
      * @param $productId
      */
@@ -49,9 +74,15 @@ class ProductList extends AbstractApi
         if ($this->page) {
             $params['page'] = $this->page;
         }
+
         if ($this->limit) {
             $params['limit'] = $this->limit;
         }
+
+        if (!empty($this->filters)) {
+            $params['filters'] = json_encode($this->filters);
+        }
+
         return $this->apiClient->send($this->endpoint, $params);
     }
 }
