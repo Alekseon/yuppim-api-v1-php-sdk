@@ -80,7 +80,16 @@ class ApiClient
                 $response = ['error' => 'You are not authorized to access this API'];
                 break;
             default:
-                $response = ['error' => 'Http error code: ' . $httpCode];
+                $error = 'Http error code: ' . $httpCode . '.';
+                try {
+                    $response = json_decode($response, true);
+                    if (isset($response['message'])) {
+                        $error .= ' ' . $response['message'];
+                    }
+                } catch (\Exception $e) {
+                    // nothing
+                }
+                $response = ['error' => $error];
         }
         $response['status_code'] = $httpCode;
         return $response;
