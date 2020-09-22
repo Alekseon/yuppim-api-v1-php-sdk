@@ -45,6 +45,7 @@ $productsApi->get();
 $productsApi = (new \YuppimApi\Yuppim('your-token'))->products();
 $productsApi->addFilter($field, $operator, $value);
 $productsApi->get();
+```
 
 ### Product filters
 

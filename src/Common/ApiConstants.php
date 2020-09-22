@@ -11,5 +11,5 @@ namespace YuppimApi\Common;
  */
 class ApiConstants
 {
-    const BASE_URL = "https://yuppim-app.alekseon-test.eu/";
+    const BASE_URL = "https://yuppim.com/";
 }
