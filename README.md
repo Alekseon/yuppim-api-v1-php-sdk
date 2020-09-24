@@ -63,6 +63,7 @@ The supported operators are:
 - "<"
 - "!="
 - "IN"
+
 Note: Not all operators are available for all reference fileds. 
 
 
