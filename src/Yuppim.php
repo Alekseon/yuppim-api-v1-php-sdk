@@ -17,11 +17,11 @@ class Yuppim
     /**
      * @var
      */
-    protected $apiKey;
+    protected $apiToken;
     /**
      * @var 
      */
-    protected $restClient;
+    protected $apiClient;
 
     /**
      * Yuppim constructor.
@@ -35,12 +35,12 @@ class Yuppim
     }
 
     /**
-     * @param $apiKey
+     * @param $apiToken
      * @return $this
      */
-    public function setApiKey($apiKey)
+    public function setApiToken($apiToken)
     {
-        $this->apiKey = $apiKey;
+        $this->apiToken = $apiToken;
         return $this;
     }
 
@@ -55,15 +55,15 @@ class Yuppim
     /**
      * @return ApiClient
      */
-    protected function getRestClient()
+    protected function getApiClient()
     {
-        if ($this->restClient === null) {
-            $this->restClient = new ApiClient(
+        if ($this->apiClient === null) {
+            $this->apiClient = new ApiClient(
                 $this->getBaseUrl(),
-                $this->apiKey
+                $this->apiToken
             );
         }
-        return $this->restClient;
+        return $this->apiClient;
     }
 
     /**
@@ -71,7 +71,7 @@ class Yuppim
      */
     public function product()
     {
-        return new \YuppimApi\Api\Product($this->getRestClient());
+        return new \YuppimApi\Api\Product($this->getApiClient());
     }
 
     /**
@@ -79,6 +79,6 @@ class Yuppim
      */
     public function products()
     {
-        return new \YuppimApi\Api\ProductList($this->getRestClient());
+        return new \YuppimApi\Api\ProductList($this->getApiClient());
     }
 }
