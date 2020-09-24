@@ -29,28 +29,29 @@ In the given example you will see how to initiate selected API and a actions whi
 ```php
 // get single product
 $productApi = (new \YuppimApi\Yuppim('your-token'))->product();
-$productApi->get($productId);
+$product = $productApi->get($productId);
 
 // get all of products, deafult limit is 100 products in one response
 $productsApi = (new \YuppimApi\Yuppim('your-token'))->products();
-$productsApi->get();
+$products = $productsApi->get();
 
 // get products with pagination
 $productsApi = (new \YuppimApi\Yuppim('your-token'))->products();
 $productsApi->setLimit($limit);
 $productsApi->setPage($page);
-$productsApi->get();
+$products = $productsApi->get();
 
 // get products filtered
 $productsApi = (new \YuppimApi\Yuppim('your-token'))->products();
 $productsApi->addFilter($field, $operator, $value);
-$productsApi->get();
+$products = $productsApi->get();
 ```
 
 ### Product filters
 
 Fields allowed to filter are:
 - Nazwa
+- Numer_katalogowy 
 - Cena_obowiazuje_od
 - Data_dodania
 - Data_modyfikacji
@@ -63,6 +64,8 @@ The supported operators are:
 - "<"
 - "!="
 - "IN"
+- "CONTAINS"
+- "STARTS WITH"
 
 Note: Not all operators are available for all reference fileds. 
 
@@ -72,7 +75,7 @@ Note: Not all operators are available for all reference fileds.
 $productsApi = (new \YuppimApi\Yuppim('your-token'))->products();
 $productsApi->addFilter('Data_dodania', '>', '2020-01-01 00:00:00');
 $productsApi->addFilter('Dostawca', 'IN', ['Dostawca_X', 'Dostawca_Y']);
-$productsApi->get();
+$product = $productsApi->get();
 ```
 
 ## Support and Feedback
