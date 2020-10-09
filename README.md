@@ -51,7 +51,7 @@ $products = $productsApi->get();
 
 Fields allowed to filter are:
 - Nazwa
-- Nazwa lub identyfikator
+- Nazwa_lub_identyfikator
 - Numer_katalogowy 
 - Cena_obowiazuje_od
 - Data_dodania
