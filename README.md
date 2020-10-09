@@ -51,6 +51,7 @@ $products = $productsApi->get();
 
 Fields allowed to filter are:
 - Nazwa
+- Nazwa lub identyfikator
 - Numer_katalogowy 
 - Cena_obowiazuje_od
 - Data_dodania
@@ -66,6 +67,7 @@ The supported operators are:
 - "IN"
 - "CONTAINS"
 - "STARTS WITH"
+- "MATCH"
 
 Note: Not all operators are available for all reference fileds. 
 
